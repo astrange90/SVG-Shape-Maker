@@ -1,7 +1,8 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 
 
-const {Circle, Square, Triangle} = require('./lib/shapes.js');
+const {Circle, Square, Triangle} = require('./lib/shapes');
 
 class Svg{
     constructor(){
@@ -46,19 +47,13 @@ inquirer
         choices: ["Circle", "Square", "Triangle"],
     },
 ])
-.then((response) =>
-response.confirm ===)
+.then((response) => {
+    const svgPageContent = generateShape (response);
+    fs.writeFile('examples.svg', svgPageContent, (err) =>
+    err ? console.log(err) : console.log('Successfully created .svg')
+);
+});
 
 
 
-function writeToFile(fileName, data) {
-	console.log("Writing [" + data + "] to file [" + fileName + "]")
-    filesystem.writeFile(fileName, data, function (err) {
-        if (err) {
-            return console.log(err);
-        }
-        console.log("SVG Successfully Generated");
-    });
-}
 
-init();
