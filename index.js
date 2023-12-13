@@ -22,7 +22,8 @@ class Svg{
 
 }
 
-const questions = [
+inquirer
+    .prompt([
     {
         type: "input",
         name: "text",
@@ -44,7 +45,10 @@ const questions = [
         message: "Choose a Shape?",
         choices: ["Circle", "Square", "Triangle"],
     },
-];
+])
+.then((response) =>
+response.confirm ===)
+
 
 
 function writeToFile(fileName, data) {
